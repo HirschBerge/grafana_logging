@@ -1662,7 +1662,10 @@
   ],
   "refresh": "",
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+	"Networking",
+	"Prometheus"
+  ],
   "templating": {
     "list": []
   },

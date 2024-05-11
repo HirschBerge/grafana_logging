@@ -25,7 +25,11 @@
       "icon": "external link",
       "includeVars": false,
       "keepTime": false,
-      "tags": [],
+      "tags": [
+        "Adblock",
+        "Pi-Hole",
+        "Prometheus"
+      ],
       "targetBlank": true,
       "title": "Rasp Pi",
       "tooltip": "takes you to the Rasp Pi interface",
@@ -1453,7 +1457,11 @@
   ],
   "refresh": false,
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+    "Adblocking",
+    "Prometheus",
+    "Pi-Hole"
+  ],
   "templating": {
     "list": [
       {
@@ -1518,6 +1526,6 @@
   "timezone": "",
   "title": "PiHole",
   "uid": "Pi-hole-Exporter",
-  "version": 6,
+  "version": 11,
   "weekStart": ""
 }

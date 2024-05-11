@@ -60,6 +60,7 @@ services:
       - ./config/grafana/dashboards/netprobe.json:/var/lib/grafana/dashboards/netprobe.json
       - ./config/grafana/dashboards/pve.json:/var/lib/grafana/dashboards/pve.json
       - ./config/grafana/dashboards/pi-hole.json:/var/lib/grafana/dashboards/pi-hole.json
+      - ./config/grafana/dashboards/docker.json:/var/lib/grafana/dashboards/docker.json
         #      - ./config/grafana/dashboards/plex.json:/var/lib/grafana/dashboards/plex.json
         #      - ./config/grafana/dashboards/truenas.json:/var/lib/grafana/dashboards/truenas.json
       - grafana_data:/var/lib/grafana

@@ -1911,6 +1911,7 @@
   "schemaVersion": 39,
   "tags": [
     "Proxmox",
+    "Virtual Machines",
     "Prometheus"
   ],
   "templating": {
