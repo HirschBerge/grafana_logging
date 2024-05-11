@@ -1,0 +1,34 @@
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 30s
+    scrape_timeout: 25s
+    static_configs:
+      - targets:
+          - 'presentation:5000'
+        labels:
+          group: 'Home network'
+  - job_name: 'pihole'
+    honor_timestamps: true
+    metrics_path: /metrics
+    scheme: http
+    static_configs:
+      - targets: ['pihole:9617']
+         
+  - job_name: 'pve'
+    static_configs:
+      - targets:
+        # - 'prometheus-pve-exporter:9221'  # Corrected target definition
+        - '10.10.0.232'
+    metrics_path: /pve
+    params:
+      module: [default]
+      cluster: ['1']
+      node: ['1']
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: 'prometheus-pve-exporter:9221'  # Corrected target replacement
+
