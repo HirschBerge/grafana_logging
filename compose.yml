@@ -56,12 +56,8 @@ services:
     image: grafana/grafana-enterprise
     volumes:
       - ./config/grafana/datasources:/etc/grafana/provisioning/datasources/
-      - ./config/grafana/dashboards/main.yml:/etc/grafana/provisioning/dashboards/main.yml
-      - ./config/grafana/dashboards/netprobe.json:/var/lib/grafana/dashboards/netprobe.json
-      - ./config/grafana/dashboards/pve.json:/var/lib/grafana/dashboards/pve.json
-      - ./config/grafana/dashboards/pi-hole.json:/var/lib/grafana/dashboards/pi-hole.json
-      - ./config/grafana/dashboards/docker.json:/var/lib/grafana/dashboards/docker.json
-      - ./config/grafana/dashboards/unifi:/var/lib/grafana/dashboards/
+      - ./config/grafana/dashboards/main:/etc/grafana/provisioning/dashboards/main.yml
+      - ./config/grafana/dashboards/json:/var/lib/grafana/dashboards/
         #      - ./config/grafana/dashboards/plex.json:/var/lib/grafana/dashboards/plex.json
         #      - ./config/grafana/dashboards/truenas.json:/var/lib/grafana/dashboards/truenas.json
       - grafana_data:/var/lib/grafana
