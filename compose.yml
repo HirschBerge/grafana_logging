@@ -56,7 +56,7 @@ services:
     image: grafana/grafana-enterprise
     volumes:
       - ./config/grafana/datasources:/etc/grafana/provisioning/datasources/
-      - ./config/grafana/dashboards/main:/etc/grafana/provisioning/dashboards/main.yml
+      - ./config/grafana/dashboards/main:/etc/grafana/provisioning/dashboards/
       - ./config/grafana/dashboards/json:/var/lib/grafana/dashboards/
         #      - ./config/grafana/dashboards/plex.json:/var/lib/grafana/dashboards/plex.json
         #      - ./config/grafana/dashboards/truenas.json:/var/lib/grafana/dashboards/truenas.json
