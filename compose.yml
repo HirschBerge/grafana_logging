@@ -20,7 +20,7 @@ services:
     container_name: netprobe-probe
     image: "plaintextpackets/netprobe:latest"
     volumes:
-      - .:/netprobe_lite
+      - ./:/netprobe_lite
     environment:
       MODULE: "NETPROBE"
     networks:
@@ -31,7 +31,7 @@ services:
     container_name: netprobe-presentation
     image: "plaintextpackets/netprobe:latest"
     volumes:
-      - .:/netprobe_lite
+      - ./:/netprobe_lite
     environment:
       MODULE: "PRESENTATION"
     networks:
