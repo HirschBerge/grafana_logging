@@ -11,7 +11,7 @@ services:
     container_name: netprobe-redis
     image: "redis:latest"
     volumes:
-      - ./config/redis/redis.conf:/etc/redis/redis.conf
+      - ./config/redis:/etc/redis/
     networks:
       - netprobe-net
         
@@ -73,7 +73,7 @@ services:
       #ports:
       #- "9221:9221"
     volumes:
-      - ./config/prometheus/pve.yml:/etc/prometheus/pve.yml
+      - ./config/pve:/etc/prometheus/
     networks:
       - netprobe-net     
 
