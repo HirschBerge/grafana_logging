@@ -61,6 +61,7 @@ services:
       - ./config/grafana/dashboards/pve.json:/var/lib/grafana/dashboards/pve.json
       - ./config/grafana/dashboards/pi-hole.json:/var/lib/grafana/dashboards/pi-hole.json
       - ./config/grafana/dashboards/docker.json:/var/lib/grafana/dashboards/docker.json
+      - ./config/grafana/dashboards/unifi:/var/lib/grafana/dashboards/
         #      - ./config/grafana/dashboards/plex.json:/var/lib/grafana/dashboards/plex.json
         #      - ./config/grafana/dashboards/truenas.json:/var/lib/grafana/dashboards/truenas.json
       - grafana_data:/var/lib/grafana
@@ -73,8 +74,8 @@ services:
     restart: always
     container_name: prometheus-pve-exporter
     image: prompve/prometheus-pve-exporter
-    ports:
-      - "9221:9221"
+      #ports:
+      #- "9221:9221"
     volumes:
       - ./config/prometheus/pve.yml:/etc/prometheus/pve.yml
     networks:
@@ -86,39 +87,34 @@ services:
       - PIHOLE_HOSTNAME=10.10.0.11
       - PIHOLE_API_TOKEN=5871477110c0452f928714ef19e0d732ff9c0b6f3c7826f445f9c4039636fdb9
       - PORT=9617
-    ports:
-      - "9617:9617"
+        #ports:
+        # - "9617:9617"
     networks:
       - netprobe-net
 
-        #  prom-plex-exporter:
-        #    image: ghcr.io/axsuul/plex-media-server-exporter:latest
-        #    environment:
-        #      # Can be set in .env
-        #      - PLEX_ADDR=${PLEX_ADDR}
-        #      - PLEX_TOKEN=${PLEX_TOKEN}
-        #      - PLEX_TIMEOUT=${PLEX_TIMEOUT}
-        #      - PLEX_RETRIES_COUNT=${PLEX_RETRIES_COUNT}
-        #      - METRICS_MEDIA_COLLECTING_INTERVAL_SECONDS=300
-        #    volumes:
-        #      - .:/srv:delegated
-        #    tty: true
-        #    stdin_open: true
-        #    ports:
-        #      - "9594:9594"
-        #
-        #  graphite:
-        #    image: prom/graphite-exporter
-        #    container_name: graphite
-        #    command:
-        #      - --graphite.mapping-config=/tmp/graphite_mapping.conf
-        #      - --graphite.listen-address=:2003
-        #        #- --log.level=debug
-        #    volumes:
-        #      - ./config/prometheus/graphite_mapping.conf:/tmp/graphite_mapping.conf:ro
-        #    restart: unless-stopped
-        #    networks:
-        #      - netprobe-net
+  unpoller:
+    image: ghcr.io/unpoller/unpoller:latest
+    restart: unless-stopped
+      #ports:
+      # - '9130:9130'
+    container_name: unpoller
+    networks:
+      - netprobe-net
+    environment:
+      - UP_INFLUXDB_DISABLE=true
+      - UP_POLLER_DEBUG=false
+      - UP_UNIFI_DYNAMIC=false
+      - UP_PROMETHEUS_HTTP_LISTEN=0.0.0.0:9130
+      - UP_PROMETHEUS_NAMESPACE=unpoller
+      - UP_UNIFI_CONTROLLER_0_USER=${UNIFI_USER}
+      - UP_UNIFI_CONTROLLER_0_PASS=${UNIFI_PASS}
+      - UP_UNIFI_CONTROLLER_0_SAVE_ALARMS=true
+      - UP_UNIFI_CONTROLLER_0_SAVE_ANOMALIES=true
+      - UP_UNIFI_CONTROLLER_0_SAVE_DPI=true
+      - UP_UNIFI_CONTROLLER_0_SAVE_EVENTS=true
+      - UP_UNIFI_CONTROLLER_0_SAVE_IDS=true
+      - UP_UNIFI_CONTROLLER_0_SAVE_SITES=true
+      - UP_UNIFI_CONTROLLER_0_URL=https://10.10.0.1:443
 
 volumes:
   prometheus_data:
