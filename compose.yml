@@ -58,8 +58,6 @@ services:
       - ./config/grafana/datasources:/etc/grafana/provisioning/datasources/
       - ./config/grafana/dashboards/main:/etc/grafana/provisioning/dashboards/
       - ./config/grafana/dashboards/json:/var/lib/grafana/dashboards/
-        #      - ./config/grafana/dashboards/plex.json:/var/lib/grafana/dashboards/plex.json
-        #      - ./config/grafana/dashboards/truenas.json:/var/lib/grafana/dashboards/truenas.json
       - grafana_data:/var/lib/grafana
     ports:
       - '3001:3000'
@@ -78,6 +76,7 @@ services:
       - netprobe-net     
 
   pihole:
+    container_name: pihole
     image: ekofr/pihole-exporter:latest
     environment:
       - PIHOLE_HOSTNAME=10.10.0.11
@@ -111,22 +110,23 @@ services:
       - UP_UNIFI_CONTROLLER_0_SAVE_IDS=true
       - UP_UNIFI_CONTROLLER_0_SAVE_SITES=true
       - UP_UNIFI_CONTROLLER_0_URL=https://10.10.0.1:443
-  plex:
-    image: ghcr.io/axsuul/plex-media-server-exporter:2022-11-26
-    build: .
-    environment:
-      # Can be set in .env
-      - PLEX_ADDR=${PLEX_ADDR}
-      - PLEX_TOKEN=${PLEX_TOKEN}
-      - PLEX_TIMEOUT=${PLEX_TIMEOUT}
-      - PLEX_RETRIES_COUNT=${PLEX_RETRIES_COUNT}
-      - METRICS_MEDIA_COLLECTING_INTERVAL_SECONDS=300
-    volumes:
-      - .:/srv:delegated
-    tty: true
-    stdin_open: true
-    ports:
-      - "9594:9594"
+#  plex:
+#    container_name: plex
+#    image: ghcr.io/axsuul/plex-media-server-exporter:2022-11-26
+#    build: ./config/plex
+#    environment:
+#      # Can be set in .env
+#      - PLEX_ADDR=${PLEX_ADDR}
+#      - PLEX_TOKEN=${PLEX_TOKEN}
+#      - PLEX_TIMEOUT=${PLEX_TIMEOUT}
+#      - PLEX_RETRIES_COUNT=${PLEX_RETRIES_COUNT}
+#      - METRICS_MEDIA_COLLECTING_INTERVAL_SECONDS=300
+#    volumes:
+#      - ./config/plex:/srv:delegated
+#    tty: true
+#    stdin_open: true
+#    ports:
+#      - "9594:9594"
 
 volumes:
   prometheus_data:
