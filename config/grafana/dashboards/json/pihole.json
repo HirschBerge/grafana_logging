@@ -18,7 +18,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 10176,
   "graphTooltip": 0,
-  "id": 17,
+  "id": 13,
   "links": [],
   "panels": [
     {
@@ -1442,10 +1442,9 @@
     "list": [
       {
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "10.10.0.11",
+          "value": "10.10.0.11"
         },
         "datasource": {
           "type": "prometheus",
@@ -1503,6 +1502,6 @@
   "timezone": "",
   "title": "Pi-Hole",
   "uid": "Pi-hole-Exporter",
-  "version": 1,
+  "version": 15,
   "weekStart": ""
 }
