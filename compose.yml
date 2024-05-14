@@ -4,7 +4,8 @@ name: netprobe
 
 networks:
   netprobe-net:
-    
+  traefik_default:
+    external: true   
 services:
   redis:
     restart: always
@@ -62,7 +63,14 @@ services:
     ports:
       - '3001:3000'
     networks:
+      - traefik_default
       - netprobe-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.entrypoints=grafana"
+      - "traefik.http.routers.grafana.rule=Host(`srv-prod-grafana.hirschykiss.net`)"
+      - "traefik.http.routers.grafana.tls.certresolver=staging"
+      - "traefik.tcp.services.grafana.loadbalancer.server.port=3001"
 
   prometheus-pve-exporter:
     restart: always
@@ -110,24 +118,18 @@ services:
       - UP_UNIFI_CONTROLLER_0_SAVE_IDS=true
       - UP_UNIFI_CONTROLLER_0_SAVE_SITES=true
       - UP_UNIFI_CONTROLLER_0_URL=https://10.10.0.1:443
-#  plex:
-#    container_name: plex
-#    image: ghcr.io/axsuul/plex-media-server-exporter:2022-11-26
-#    build: ./config/plex
-#    environment:
-#      # Can be set in .env
-#      - PLEX_ADDR=${PLEX_ADDR}
-#      - PLEX_TOKEN=${PLEX_TOKEN}
-#      - PLEX_TIMEOUT=${PLEX_TIMEOUT}
-#      - PLEX_RETRIES_COUNT=${PLEX_RETRIES_COUNT}
-#      - METRICS_MEDIA_COLLECTING_INTERVAL_SECONDS=300
-#    volumes:
-#      - ./config/plex:/srv:delegated
-#    tty: true
-#    stdin_open: true
-#    ports:
-#      - "9594:9594"
 
+  truenas_exporter:
+    image: prom/graphite-exporter:latest
+    container_name: truenas_exporter
+    restart: unless-stopped
+    ports:
+      - '9108:9108'
+        #      - '9109:2003'
+      - '2003:9109'
+    volumes:
+      - ./config/graphite/graphite_mappings.yaml:/tmp/graphite_mapping.yaml
+    command: ["--graphite.mapping-config=/tmp/graphite_mapping.yaml"]
 volumes:
   prometheus_data:
   grafana_data:
