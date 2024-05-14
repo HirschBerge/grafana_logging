@@ -101,6 +101,13 @@
         "y": 0
       },
       "id": 41,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Switches Dashboard",
+          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/FsfxpWaZz/unifi3a-switch-insights"
+        }
+      ],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
@@ -180,6 +187,13 @@
         "y": 0
       },
       "id": 42,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "UAP Insights Dashboard",
+          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/g5wFWqxZk/unifi3a-uap-insights"
+        }
+      ],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
@@ -259,6 +273,13 @@
         "y": 0
       },
       "id": 43,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Gateway Insights Dashboard",
+          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/4Yo8IZ-Wk/unifi3a-gateway-insights"
+        }
+      ],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
@@ -339,6 +360,13 @@
         "y": 0
       },
       "id": 44,
+      "links": [
+        {
+          "targetBlank": true,
+          "title": "Clients Dashboard",
+          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/jMfvAjxWz/unifi3a-client-insights"
+        }
+      ],
       "maxDataPoints": 100,
       "options": {
         "colorMode": "none",
@@ -1589,6 +1617,6 @@
   "timezone": "browser",
   "title": "UniFi: Network Sites",
   "uid": "9WaGWZaZk",
-  "version": 2,
+  "version": 8,
   "weekStart": ""
 }

@@ -42,6 +42,20 @@
       "tooltip": "Takes you to Proxmox",
       "type": "link",
       "url": "https://srv-prod-proxmox.home.hirschykiss.net:8006/#v1:0:18:4:::::::"
+    },
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": true,
+      "tags": [
+        "Homelab Service"
+      ],
+      "targetBlank": false,
+      "title": "Homelab Services",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
     }
   ],
   "liveNow": false,
@@ -1429,8 +1443,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
-        "w": 3,
+        "h": 6,
+        "w": 7,
         "x": 0,
         "y": 24
       },
@@ -1470,102 +1484,6 @@
       ],
       "title": "Storage usage",
       "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PBFA97CFB590B2093"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "links": [],
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 11,
-        "w": 4,
-        "x": 3,
-        "y": 24
-      },
-      "id": 15,
-      "options": {
-        "displayMode": "basic",
-        "maxVizHeight": 300,
-        "minVizHeight": 10,
-        "minVizWidth": 0,
-        "namePlacement": "auto",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": true
-        },
-        "showUnfilled": false,
-        "sizing": "auto",
-        "text": {
-          "titleSize": 20
-        },
-        "valueMode": "color"
-      },
-      "pluginVersion": "10.4.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "pve_disk_size_bytes{instance=\"$instance\", id=~\"storage/.+\"} * on (id, instance) group_left(storage) pve_storage_info",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "{{storage}}",
-          "range": false,
-          "refId": "storage size"
-        }
-      ],
-      "title": "Space allocation",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": false,
-              "id": true,
-              "instance": true,
-              "job": true
-            },
-            "indexByName": {},
-            "renameByName": {}
-          }
-        }
-      ],
-      "type": "bargauge"
     },
     {
       "datasource": {
@@ -1692,6 +1610,101 @@
           "color": {
             "mode": "palette-classic"
           },
+          "links": [],
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 30
+      },
+      "id": 15,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": false,
+        "sizing": "auto",
+        "text": {
+          "titleSize": 20
+        },
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "pve_disk_size_bytes{instance=\"$instance\", id=~\"storage/.+\"} * on (id, instance) group_left(storage) pve_storage_info",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{storage}}",
+          "range": false,
+          "refId": "storage size"
+        }
+      ],
+      "title": "Space allocation",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": false,
+              "id": true,
+              "instance": true,
+              "job": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
@@ -1731,8 +1744,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1863,8 +1875,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1923,8 +1934,8 @@
   "schemaVersion": 39,
   "tags": [
     "Proxmox",
-    "Virtual Machines",
-    "Prometheus"
+    "Prometheus",
+    "Homelab Service"
   ],
   "templating": {
     "list": [
@@ -1991,6 +2002,6 @@
   "timezone": "",
   "title": "Proxmox",
   "uid": "Dp7Cd57Zz4",
-  "version": 8,
+  "version": 11,
   "weekStart": ""
 }

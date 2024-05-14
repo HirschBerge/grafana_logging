@@ -131,6 +131,10 @@
               },
               {
                 "id": "custom.align"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
               }
             ]
           },
@@ -246,6 +250,10 @@
               },
               {
                 "id": "custom.align"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
               }
             ]
           },
@@ -2984,6 +2992,6 @@
   "timezone": "browser",
   "title": "UniFi: Gateway Insights",
   "uid": "4Yo8IZ-Wk",
-  "version": 4,
+  "version": 7,
   "weekStart": ""
 }

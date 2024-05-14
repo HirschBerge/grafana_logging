@@ -19,7 +19,34 @@
   "gnetId": 10176,
   "graphTooltip": 0,
   "id": 13,
-  "links": [],
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [
+        "Homelab Service"
+      ],
+      "targetBlank": true,
+      "title": "Homelab Services",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Pi-Hole Interface",
+      "tooltip": "",
+      "type": "link",
+      "url": "http://srv-prod-pi.home.hirschykiss.net/admin"
+    }
+  ],
   "panels": [
     {
       "collapsed": false,
@@ -718,7 +745,7 @@
         ]
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 8,
         "x": 0,
         "y": 8
@@ -748,299 +775,6 @@
         }
       ],
       "title": "Ads blocked (today)",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": "PBFA97CFB590B2093",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 8,
-        "y": 8
-      },
-      "id": 68,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "10.4.1",
-      "targets": [
-        {
-          "datasource": "PBFA97CFB590B2093",
-          "expr": "pihole_queries_cached{hostname=~'$node'}",
-          "interval": "",
-          "legendFormat": "Queries cached",
-          "refId": "A"
-        },
-        {
-          "datasource": "PBFA97CFB590B2093",
-          "expr": "pihole_queries_forwarded{hostname=~'$node'}",
-          "interval": "",
-          "legendFormat": "Queries forwarded",
-          "refId": "B"
-        }
-      ],
-      "title": "Queries cached/forwarded",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": "PBFA97CFB590B2093",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 16,
-        "y": 8
-      },
-      "id": 78,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "10.4.1",
-      "targets": [
-        {
-          "datasource": "PBFA97CFB590B2093",
-          "expr": "pihole_querytypes",
-          "interval": "",
-          "legendFormat": "{{ type }}",
-          "refId": "A"
-        }
-      ],
-      "title": "DNS Query types",
-      "transparent": true,
-      "type": "timeseries"
-    },
-    {
-      "datasource": "PBFA97CFB590B2093",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "pihole"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "super-light-red",
-                  "mode": "fixed"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 0,
-        "y": 13
-      },
-      "id": 64,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "10.4.1",
-      "targets": [
-        {
-          "datasource": "PBFA97CFB590B2093",
-          "expr": "pihole_ads_percentage_today",
-          "interval": "",
-          "legendFormat": "{{ job }}",
-          "refId": "A"
-        }
-      ],
-      "title": "% of ads blocked",
       "transparent": true,
       "type": "timeseries"
     },
@@ -1100,10 +834,10 @@
         ]
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 8,
         "x": 8,
-        "y": 13
+        "y": 8
       },
       "id": 74,
       "options": {
@@ -1197,10 +931,10 @@
         ]
       },
       "gridPos": {
-        "h": 5,
+        "h": 7,
         "w": 8,
         "x": 16,
-        "y": 13
+        "y": 8
       },
       "id": 90,
       "options": {
@@ -1297,6 +1031,299 @@
           {
             "matcher": {
               "id": "byName",
+              "options": "pihole"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "super-light-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 0,
+        "y": 15
+      },
+      "id": 64,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": "PBFA97CFB590B2093",
+          "expr": "pihole_ads_percentage_today",
+          "interval": "",
+          "legendFormat": "{{ job }}",
+          "refId": "A"
+        }
+      ],
+      "title": "% of ads blocked",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": "PBFA97CFB590B2093",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 8,
+        "y": 15
+      },
+      "id": 68,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": "PBFA97CFB590B2093",
+          "expr": "pihole_queries_cached{hostname=~'$node'}",
+          "interval": "",
+          "legendFormat": "Queries cached",
+          "refId": "A"
+        },
+        {
+          "datasource": "PBFA97CFB590B2093",
+          "expr": "pihole_queries_forwarded{hostname=~'$node'}",
+          "interval": "",
+          "legendFormat": "Queries forwarded",
+          "refId": "B"
+        }
+      ],
+      "title": "Queries cached/forwarded",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": "PBFA97CFB590B2093",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 8,
+        "x": 16,
+        "y": 15
+      },
+      "id": 78,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.1",
+      "targets": [
+        {
+          "datasource": "PBFA97CFB590B2093",
+          "expr": "pihole_querytypes",
+          "interval": "",
+          "legendFormat": "{{ type }}",
+          "refId": "A"
+        }
+      ],
+      "title": "DNS Query types",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": "PBFA97CFB590B2093",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
               "options": "pihole_unique_clients{hostname=\\\"127.0.0.1\\\",instance=\\\"localhost:9311\\\",job=\\\"pihole\\\"}"
             },
             "properties": [
@@ -1315,7 +1342,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 18
+        "y": 20
       },
       "id": 88,
       "options": {
@@ -1405,7 +1432,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 18
+        "y": 20
       },
       "id": 76,
       "options": {
@@ -1437,7 +1464,11 @@
   ],
   "refresh": false,
   "schemaVersion": 39,
-  "tags": [],
+  "tags": [
+    "Pi-Hole",
+    "Adblocking",
+    "Homelab Service"
+  ],
   "templating": {
     "list": [
       {
@@ -1502,6 +1533,6 @@
   "timezone": "",
   "title": "Pi-Hole",
   "uid": "Pi-hole-Exporter",
-  "version": 15,
+  "version": 20,
   "weekStart": ""
 }

@@ -1963,7 +1963,7 @@
         "type": "prometheus",
         "uid": "PBFA97CFB590B2093"
       },
-      "description": "Amazon Devices TX / RX bytes per second. Rx is on the negative axis. My home network has a ton of Amazon devices, so I broke them out separately. If you don't have Amazon devices, or they have different names, you can edit the query to use a different name. e = wired, w = wireless",
+      "description": "Google Devices TX / RX bytes per second. Rx is on the negative axis. My home network has a ton of Google devices, so I broke them out separately. If you don't have Google devices, or they have different names, you can edit the query to use a different name. e = wired, w = wireless",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1977,22 +1977,22 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
+            "fillOpacity": 60,
+            "gradientMode": "opacity",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "auto",
-            "spanNulls": false,
+            "showPoints": "never",
+            "spanNulls": 3600000,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2078,10 +2078,12 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name=~\"^amazon.*\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name=~\".*Google.*\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
           "hide": false,
           "interval": "$Smooth",
           "legendFormat": "w {{name}} {{mac}} Tx",
+          "range": true,
           "refId": "A"
         },
         {
@@ -2089,10 +2091,12 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name=~\"^amazon.*\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name=~\".*Google.*\", name=~\"$Wireless\", site_name=~\"$Site\", ap_name=~\"$AP\"}[$__interval]))",
           "hide": false,
           "interval": "$Smooth",
           "legendFormat": "w {{name}} {{mac}} Rx",
+          "range": true,
           "refId": "B"
         },
         {
@@ -2100,10 +2104,12 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name=~\"^amazon.*\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum by ($Identifier) (rate(unpoller_client_transmit_bytes_total{name=~\".*Google.*\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
           "hide": false,
           "interval": "$Smooth",
           "legendFormat": "e {{name}} {{mac}} Tx",
+          "range": true,
           "refId": "C"
         },
         {
@@ -2111,10 +2117,12 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name=~\"^amazon.*\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
+          "editorMode": "code",
+          "expr": "sum by ($Identifier) (rate(unpoller_client_receive_bytes_total{name=~\".*Google.*\", name=~\"$Wired\", site_name=~\"$Site\", sw_name=~\"$Switch\"}[$__interval]))",
           "hide": false,
           "interval": "$Smooth",
           "legendFormat": "e {{name}} {{mac}} Rx",
+          "range": true,
           "refId": "D"
         }
       ],
@@ -4512,6 +4520,6 @@
   "timezone": "browser",
   "title": "UniFi: Client Insights",
   "uid": "jMfvAjxWz",
-  "version": 5,
+  "version": 8,
   "weekStart": ""
 }

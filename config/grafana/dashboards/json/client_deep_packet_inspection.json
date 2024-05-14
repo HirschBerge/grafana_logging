@@ -62,7 +62,7 @@
         "uid": "PBFA97CFB590B2093"
       },
       "gridPos": {
-        "h": 2,
+        "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
@@ -136,6 +136,10 @@
               },
               {
                 "id": "custom.align"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
               }
             ]
           },
@@ -254,6 +258,10 @@
               },
               {
                 "id": "custom.align"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
               }
             ]
           },
@@ -302,10 +310,10 @@
         ]
       },
       "gridPos": {
-        "h": 22,
+        "h": 6,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 1
       },
       "id": 437,
       "options": {
@@ -440,10 +448,10 @@
       "fontSize": "70%",
       "format": "bytes",
       "gridPos": {
-        "h": 12,
+        "h": 13,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 7
       },
       "hideTimeOverride": false,
       "id": 9,
@@ -528,10 +536,10 @@
       "fontSize": "70%",
       "format": "bytes",
       "gridPos": {
-        "h": 12,
+        "h": 13,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 7
       },
       "hideTimeOverride": false,
       "id": 10,
@@ -637,7 +645,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -703,10 +712,10 @@
         ]
       },
       "gridPos": {
-        "h": 17,
+        "h": 11,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 20
       },
       "id": 304,
       "options": {
@@ -868,10 +877,10 @@
         ]
       },
       "gridPos": {
-        "h": 17,
+        "h": 10,
         "w": 24,
         "x": 0,
-        "y": 53
+        "y": 31
       },
       "id": 305,
       "options": {
@@ -925,7 +934,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 70
+        "y": 41
       },
       "id": 2191,
       "panels": [
@@ -1110,7 +1119,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 71
+        "y": 42
       },
       "id": 2189,
       "panels": [
@@ -1293,7 +1302,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 72
+        "y": 43
       },
       "id": 894,
       "panels": [
@@ -1419,7 +1428,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 73
+        "y": 44
       },
       "id": 569,
       "panels": [
@@ -1546,7 +1555,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 45
       },
       "id": 12,
       "panels": [
@@ -2182,6 +2191,6 @@
   "timezone": "browser",
   "title": "UniFi: Client Deep Packet Inspection",
   "uid": "w3usaHLZk",
-  "version": 6,
+  "version": 12,
   "weekStart": ""
 }
