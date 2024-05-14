@@ -123,8 +123,9 @@ services:
     image: prom/graphite-exporter:latest
     container_name: truenas_exporter
     restart: unless-stopped
+    networks:
+      - netprobe-net
     ports:
-      - '9108:9108'
         #      - '9109:2003'
       - '2003:9109'
     volumes:
