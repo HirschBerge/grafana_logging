@@ -95,7 +95,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 0,
         "y": 0
@@ -181,7 +181,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 3,
         "y": 0
@@ -267,7 +267,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 6,
         "y": 0
@@ -354,7 +354,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 3,
         "x": 9,
         "y": 0
@@ -403,13 +403,106 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "description": "Checks to see if there are any updates available for your Unifi Devices",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "fieldMinMax": false,
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "purple",
+                  "index": 0,
+                  "text": "No Updates Available"
+                },
+                "1": {
+                  "color": "red",
+                  "index": 1,
+                  "text": "Upgrade Available!"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "min": 100,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 46,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 20,
+          "valueSize": 13
+        },
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "unpoller_device_upgradable ",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "{{name}}",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Upgrade Check",
+      "type": "stat"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 4,
-        "w": 12,
-        "x": 12,
+        "h": 5,
+        "w": 6,
+        "x": 18,
         "y": 0
       },
       "id": 37,
@@ -445,7 +538,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 5
       },
       "id": 4,
       "panels": [],
@@ -504,7 +597,7 @@
         "h": 3,
         "w": 6,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 40,
       "maxDataPoints": 100,
@@ -629,7 +722,7 @@
         "h": 11,
         "w": 18,
         "x": 6,
-        "y": 5
+        "y": 6
       },
       "id": 38,
       "options": {
@@ -782,7 +875,7 @@
         "h": 8,
         "w": 3,
         "x": 0,
-        "y": 8
+        "y": 9
       },
       "id": 32,
       "options": {
@@ -862,7 +955,7 @@
         "h": 8,
         "w": 3,
         "x": 3,
-        "y": 8
+        "y": 9
       },
       "id": 33,
       "options": {
@@ -973,7 +1066,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 17
       },
       "id": 15,
       "options": {
@@ -1088,7 +1181,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 24
+        "y": 25
       },
       "id": 2,
       "options": {
@@ -1213,7 +1306,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1242,7 +1336,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 32
       },
       "id": 39,
       "options": {
@@ -1337,7 +1431,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1406,7 +1501,7 @@
         "h": 17,
         "w": 24,
         "x": 0,
-        "y": 38
+        "y": 39
       },
       "id": 45,
       "options": {
@@ -1617,6 +1712,6 @@
   "timezone": "browser",
   "title": "UniFi: Network Sites",
   "uid": "9WaGWZaZk",
-  "version": 8,
+  "version": 10,
   "weekStart": ""
 }
