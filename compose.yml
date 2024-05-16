@@ -4,8 +4,9 @@ name: netprobe
 
 networks:
   netprobe-net:
-  traefik_default:
+  proxy:
     external: true   
+
 services:
   redis:
     restart: always
@@ -60,17 +61,41 @@ services:
       - ./config/grafana/dashboards/main:/etc/grafana/provisioning/dashboards/
       - ./config/grafana/dashboards/json:/var/lib/grafana/dashboards/
       - grafana_data:/var/lib/grafana
-    ports:
-      - '3001:3000'
+        #    ports:
+        #      - '3001:3000'
     networks:
-      - traefik_default
+      - proxy
       - netprobe-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.grafana.entrypoints=grafana"
+      ## Public Insecure
+      - "traefik.http.routers.grafana.entrypoints=http"
       - "traefik.http.routers.grafana.rule=Host(`srv-prod-grafana.hirschykiss.net`)"
-      - "traefik.http.routers.grafana.tls.certresolver=staging"
-      - "traefik.tcp.services.grafana.loadbalancer.server.port=3001"
+      - "traefik.http.middlewares.grafana-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.grafana.middlewares=grafana-https-redirect"
+      ## Public Secure
+      - "traefik.http.routers.grafana-secure.entrypoints=https"
+      - "traefik.http.routers.grafana-secure.rule=Host(`srv-prod-grafana.hirschykiss.net`)"
+      - "traefik.http.routers.grafana-secure.tls=true"
+      - "traefik.http.routers.grafana-secure.tls.domains[0].main=hirschykiss.net"
+      - "traefik.http.routers.grafana-secure.tls.domains[0].sans=*.hirschykiss.net"
+      - "traefik.http.routers.grafana-secure.tls.certresolver=production"
+      - "traefik.http.routers.grafana-secure.service=grafana-secure"
+      - "traefik.http.services.grafana-secure.loadbalancer.server.port=3000"
+      ## Private Insecure
+      - "traefik.http.routers.grafana-private.entrypoints=http"
+      - "traefik.http.routers.grafana-private.rule=Host(`srv-prod-grafana.home.hirschykiss.net`)"
+      - "traefik.http.middlewares.grafana-private-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.grafana-private.middlewares=grafana-private-https-redirect"
+      ## Private Secure
+      - "traefik.http.routers.grafana-private-secure.entrypoints=https"
+      - "traefik.http.routers.grafana-private-secure.rule=Host(`srv-prod-grafana.home.hirschykiss.net`)"
+      - "traefik.http.routers.grafana-private-secure.tls=true"
+      - "traefik.http.routers.grafana-private-secure.service=grafana-private-secure"
+      - "traefik.http.services.grafana-private-secure.loadbalancer.server.port=3000"
+      - "traefik.docker.network=proxy"
 
   prometheus-pve-exporter:
     restart: always
@@ -85,6 +110,7 @@ services:
 
   pihole:
     container_name: pihole
+    restart: always
     image: ekofr/pihole-exporter:latest
     environment:
       - PIHOLE_HOSTNAME=10.10.0.11
