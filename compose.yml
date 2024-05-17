@@ -152,8 +152,8 @@ services:
     networks:
       - netprobe-net
     ports:
-        #      - '9109:2003'
-      - '2003:9109'
+    - '9108:9108'
+    - '2003:9109'
     volumes:
       - ./config/graphite/graphite_mappings.yaml:/tmp/graphite_mapping.yaml
     command: ["--graphite.mapping-config=/tmp/graphite_mapping.yaml"]
