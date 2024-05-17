@@ -1386,8 +1386,8 @@
   "schemaVersion": 39,
   "tags": [
     "TrueNAS",
-    "Homelab Service",
-    "Prometheus"
+    "Prometheus",
+    "Broken"
   ],
   "templating": {
     "list": [
