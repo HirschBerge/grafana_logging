@@ -375,7 +375,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum by (id, name, type) (pve_guest_info{instance=\"$instance\"})",
+          "expr": "sum by (id, name, type, instance) (pve_guest_info{instance=\"$instance\"})",
           "format": "table",
           "instant": true,
           "interval": "",

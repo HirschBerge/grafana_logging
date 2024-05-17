@@ -28,7 +28,7 @@
       "tags": [
         "Homelab Service"
       ],
-      "targetBlank": true,
+      "targetBlank": false,
       "title": "Homelab Services",
       "tooltip": "",
       "type": "dashboards",

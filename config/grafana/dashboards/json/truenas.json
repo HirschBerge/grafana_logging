@@ -32,7 +32,7 @@
       "includeVars": false,
       "keepTime": false,
       "tags": [],
-      "targetBlank": true,
+      "targetBlank": false,
       "title": "TrueNAS",
       "tooltip": "Takes you to TrueNAS Scale NAS",
       "type": "link",
