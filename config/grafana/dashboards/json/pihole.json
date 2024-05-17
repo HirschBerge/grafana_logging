@@ -21,6 +21,18 @@
   "id": 13,
   "links": [
     {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Pi-Hole Interface",
+      "tooltip": "",
+      "type": "link",
+      "url": "http://srv-prod-pi.home.hirschykiss.net/admin"
+    },
+    {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": false,
@@ -33,18 +45,6 @@
       "tooltip": "",
       "type": "dashboards",
       "url": ""
-    },
-    {
-      "asDropdown": false,
-      "icon": "external link",
-      "includeVars": false,
-      "keepTime": false,
-      "tags": [],
-      "targetBlank": true,
-      "title": "Pi-Hole Interface",
-      "tooltip": "",
-      "type": "link",
-      "url": "http://srv-prod-pi.home.hirschykiss.net/admin"
     }
   ],
   "panels": [

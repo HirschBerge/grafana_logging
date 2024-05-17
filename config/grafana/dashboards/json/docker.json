@@ -23,6 +23,18 @@
   "id": 25,
   "links": [
     {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "Portainer",
+      "tooltip": "Go to the Portainer interface",
+      "type": "link",
+      "url": "https://srv-prod-docker.home.hirschykiss.net:9443"
+    },
+    {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": false,
@@ -35,18 +47,6 @@
       "tooltip": "",
       "type": "dashboards",
       "url": ""
-    },
-    {
-      "asDropdown": false,
-      "icon": "external link",
-      "includeVars": false,
-      "keepTime": false,
-      "tags": [],
-      "targetBlank": true,
-      "title": "Portainer",
-      "tooltip": "Go to the Portainer interface",
-      "type": "link",
-      "url": "https://srv-prod-docker.home.hirschykiss.net:9443"
     }
   ],
   "liveNow": false,
@@ -73,7 +73,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -165,7 +165,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -233,7 +233,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -333,7 +333,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -397,7 +397,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               }
             ]
@@ -462,7 +462,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -530,7 +530,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -630,7 +630,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
@@ -726,7 +726,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "purple",
                 "value": null
               },
               {
