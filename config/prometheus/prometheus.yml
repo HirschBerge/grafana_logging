@@ -37,6 +37,8 @@ scrape_configs:
       - targets:
         # - 'prometheus-pve-exporter:9221'  # Corrected target definition
         - '10.10.0.232'
+        - "10.10.10.4"
+        - "10.10.10.5"
     metrics_path: /pve
     params:
       module: [default]
