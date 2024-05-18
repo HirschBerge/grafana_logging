@@ -105,7 +105,7 @@
         {
           "targetBlank": true,
           "title": "Switches Dashboard",
-          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/FsfxpWaZz/unifi3a-switch-insights"
+          "url": "http://docker-prod.home.hirschykiss.net:3001/d/FsfxpWaZz/unifi3a-switch-insights"
         }
       ],
       "maxDataPoints": 100,
@@ -191,7 +191,7 @@
         {
           "targetBlank": true,
           "title": "UAP Insights Dashboard",
-          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/g5wFWqxZk/unifi3a-uap-insights"
+          "url": "http://docker-prod.home.hirschykiss.net:3001/d/g5wFWqxZk/unifi3a-uap-insights"
         }
       ],
       "maxDataPoints": 100,
@@ -277,7 +277,7 @@
         {
           "targetBlank": true,
           "title": "Gateway Insights Dashboard",
-          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/4Yo8IZ-Wk/unifi3a-gateway-insights"
+          "url": "http://docker-prod.home.hirschykiss.net:3001/d/4Yo8IZ-Wk/unifi3a-gateway-insights"
         }
       ],
       "maxDataPoints": 100,
@@ -364,7 +364,7 @@
         {
           "targetBlank": true,
           "title": "Clients Dashboard",
-          "url": "http://srv-prod-docker.home.hirschykiss.net:3001/d/jMfvAjxWz/unifi3a-client-insights"
+          "url": "http://docker-prod.home.hirschykiss.net:3001/d/jMfvAjxWz/unifi3a-client-insights"
         }
       ],
       "maxDataPoints": 100,

@@ -41,7 +41,7 @@
       "title": "Proxmox",
       "tooltip": "Takes you to Proxmox",
       "type": "link",
-      "url": "https://srv-prod-proxmox.home.hirschykiss.net:8006/#v1:0:18:4:::::::"
+      "url": "https://cluster-pve.home.hirschykiss.net/#v1:0:18:4:::::::"
     },
     {
       "asDropdown": true,

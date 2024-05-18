@@ -30,7 +30,7 @@
       "title": "Pi-Hole Interface",
       "tooltip": "",
       "type": "link",
-      "url": "http://srv-prod-pi.home.hirschykiss.net/admin"
+      "url": "https://pi-prod.home.hirschykiss.net/"
     },
     {
       "asDropdown": true,

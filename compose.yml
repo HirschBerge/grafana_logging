@@ -70,13 +70,13 @@ services:
       - "traefik.enable=true"
       ## Public Insecure
       - "traefik.http.routers.grafana.entrypoints=http"
-      - "traefik.http.routers.grafana.rule=Host(`srv-prod-grafana.hirschykiss.net`)"
+      - "traefik.http.routers.grafana.rule=Host(`grafana-prod.hirschykiss.net`)"
       - "traefik.http.middlewares.grafana-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.grafana.middlewares=grafana-https-redirect"
       ## Public Secure
       - "traefik.http.routers.grafana-secure.entrypoints=https"
-      - "traefik.http.routers.grafana-secure.rule=Host(`srv-prod-grafana.hirschykiss.net`)"
+      - "traefik.http.routers.grafana-secure.rule=Host(`grafana-prod.hirschykiss.net`)"
       - "traefik.http.routers.grafana-secure.tls=true"
       - "traefik.http.routers.grafana-secure.tls.domains[0].main=hirschykiss.net"
       - "traefik.http.routers.grafana-secure.tls.domains[0].sans=*.hirschykiss.net"
@@ -85,30 +85,17 @@ services:
       - "traefik.http.services.grafana-secure.loadbalancer.server.port=3000"
       ## Private Insecure
       - "traefik.http.routers.grafana-private.entrypoints=http"
-      - "traefik.http.routers.grafana-private.rule=Host(`srv-prod-grafana.home.hirschykiss.net`)"
+      - "traefik.http.routers.grafana-private.rule=Host(`grafana-prod.home.hirschykiss.net`)"
       - "traefik.http.middlewares.grafana-private-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
       - "traefik.http.routers.grafana-private.middlewares=grafana-private-https-redirect"
       ## Private Secure
       - "traefik.http.routers.grafana-private-secure.entrypoints=https"
-      - "traefik.http.routers.grafana-private-secure.rule=Host(`srv-prod-grafana.home.hirschykiss.net`)"
+      - "traefik.http.routers.grafana-private-secure.rule=Host(`grafana-prod.home.hirschykiss.net`)"
       - "traefik.http.routers.grafana-private-secure.tls=true"
       - "traefik.http.routers.grafana-private-secure.service=grafana-private-secure"
       - "traefik.http.services.grafana-private-secure.loadbalancer.server.port=3000"
       - "traefik.docker.network=proxy"
-    environment:
-      GF_AUTH_GENERIC_OAUTH_ENABLED: "true"
-      GF_AUTH_GENERIC_OAUTH_NAME: "authentik"
-      GF_AUTH_GENERIC_OAUTH_CLIENT_ID: "${AUTH_CLIENT_ID}"
-      GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET: "${AUTH_CLIENT_SECRET}"
-      GF_AUTH_GENERIC_OAUTH_SCOPES: "openid profile email"
-      GF_SERVER_ROOT_URL: "https://srv-prod-grafana.home.hirschykiss.net"
-      GF_AUTH_GENERIC_OAUTH_AUTH_URL: "https://srv-prod-authentik.home.hirschykiss.net/application/o/authorize/"
-      GF_AUTH_GENERIC_OAUTH_TOKEN_URL: "https://127.0.0.1:380/application/o/token/"
-      GF_AUTH_GENERIC_OAUTH_API_URL: "https://127.0.0.1:380/application/o/userinfo/"
-      GF_AUTH_SIGNOUT_REDIRECT_URL: "https://srv-prod-authentik.home.hirschykiss.net/application/o/srv-prod-grafana/end-session/"
-        #      GF_AUTH_OAUTH_AUTO_LOGIN: "true"
-      GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups, 'Grafana Admins') && 'Admin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
 
   prometheus-pve-exporter:
     restart: always

@@ -36,7 +36,7 @@
       "title": "TrueNAS",
       "tooltip": "Takes you to TrueNAS Scale NAS",
       "type": "link",
-      "url": "https://srv-prod-nas.home.hirschykiss.net/ui/dashboard"
+      "url": "https://nas-prod.home.hirschykiss.net/ui/dashboard"
     },
     {
       "asDropdown": true,

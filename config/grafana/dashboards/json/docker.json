@@ -32,7 +32,7 @@
       "title": "Portainer",
       "tooltip": "Go to the Portainer interface",
       "type": "link",
-      "url": "https://srv-prod-docker.home.hirschykiss.net:9443"
+      "url": "https://portainer-prod.home.hirschykiss.net"
     },
     {
       "asDropdown": true,
