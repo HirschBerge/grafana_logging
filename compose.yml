@@ -119,7 +119,7 @@ services:
     image: ekofr/pihole-exporter:latest
     environment:
       - PIHOLE_HOSTNAME=10.10.0.11
-      - PIHOLE_API_TOKEN=5871477110c0452f928714ef19e0d732ff9c0b6f3c7826f445f9c4039636fdb9
+      - PIHOLE_API_TOKEN=${PIHOLE_API_TOKEN}
       - PORT=9617
         #ports:
         # - "9617:9617"
