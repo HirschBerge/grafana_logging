@@ -5453,7 +5453,7 @@
       "type": "row"
     }
   ],
-  "refresh": "",
+  "refresh": "10s",
   "schemaVersion": 39,
   "tags": [
     "TrueNAS",
@@ -5494,10 +5494,10 @@
         "current": {
           "selected": true,
           "text": [
-            "cpu4"
+            "All :)"
           ],
           "value": [
-            "cpu4"
+            "$_all"
           ]
         },
         "datasource": {

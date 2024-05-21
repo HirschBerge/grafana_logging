@@ -1960,7 +1960,7 @@
       "type": "row"
     }
   ],
-  "refresh": "1m",
+  "refresh": "10s",
   "schemaVersion": 39,
   "tags": [
     "unifi",
