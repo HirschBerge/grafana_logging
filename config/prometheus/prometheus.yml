@@ -29,13 +29,13 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets: ['truenas_exporter:9108']
-      #- targets: ['10.10.0.27:9108']
+      #- targets: ['10.10.10.53:9108']
 
   - job_name: 'docker'
     metrics_path: /metrics
     static_configs:
       #      - targets: ['host.docker.internal:9323']
-      - targets: ['10.10.0.27:9323'] # Not sure why, but host.docker.internal takes about 10 seconds to resolve and breaks this
+      - targets: ['10.10.10.53:9323'] # Not sure why, but host.docker.internal takes about 10 seconds to resolve and breaks this
          
   - job_name: 'unifi'
     metrics_path: /metrics

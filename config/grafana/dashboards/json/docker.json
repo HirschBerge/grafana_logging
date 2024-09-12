@@ -788,8 +788,8 @@
       {
         "current": {
           "selected": false,
-          "text": "10.10.0.27:9323",
-          "value": "10.10.0.27:9323"
+          "text": "10.10.10.53:9323",
+          "value": "10.10.10.53:9323"
         },
         "datasource": {
           "type": "prometheus",
