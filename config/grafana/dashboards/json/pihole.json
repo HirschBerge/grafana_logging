@@ -18,7 +18,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 10176,
   "graphTooltip": 0,
-  "id": 13,
+  "id": 49,
   "links": [
     {
       "asDropdown": false,
@@ -133,7 +133,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
@@ -207,7 +207,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
@@ -259,7 +259,7 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 4,
+        "w": 2,
         "x": 8,
         "y": 1
       },
@@ -281,7 +281,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
@@ -292,6 +292,91 @@
         }
       ],
       "title": "Unique domains",
+      "transparent": true,
+      "type": "stat"
+    },
+    {
+      "datasource": "PBFA97CFB590B2093",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "text": "N/A"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 100
+              },
+              {
+                "color": "#EAB839",
+                "value": 500
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 750
+              },
+              {
+                "color": "green",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 10,
+        "y": 1
+      },
+      "id": 93,
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.4.3",
+      "targets": [
+        {
+          "datasource": "PBFA97CFB590B2093",
+          "expr": "pihole_unique_domains{hostname=~'$node'}",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Ads Blocked today",
       "transparent": true,
       "type": "stat"
     },
@@ -656,7 +741,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
@@ -852,7 +937,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
@@ -949,7 +1034,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "10.4.2",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
@@ -1462,7 +1547,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": [
     "Pi-Hole",
@@ -1500,7 +1585,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1533,6 +1618,6 @@
   "timezone": "",
   "title": "Pi-Hole",
   "uid": "Pi-hole-Exporter",
-  "version": 20,
+  "version": 6,
   "weekStart": ""
 }
