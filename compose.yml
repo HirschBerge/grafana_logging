@@ -118,7 +118,7 @@ services:
     restart: always
     image: ekofr/pihole-exporter:latest
     environment:
-      - PIHOLE_HOSTNAME=10.10.0.11
+      - PIHOLE_HOSTNAME=10.10.10.54
       - PIHOLE_API_TOKEN=${PIHOLE_API_TOKEN}
       - PORT=9617
         #ports:

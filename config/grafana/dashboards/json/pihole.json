@@ -1474,8 +1474,8 @@
       {
         "current": {
           "selected": false,
-          "text": "10.10.0.11",
-          "value": "10.10.0.11"
+          "text": "10.10.10.54",
+          "value": "10.10.10.54"
         },
         "datasource": {
           "type": "prometheus",
