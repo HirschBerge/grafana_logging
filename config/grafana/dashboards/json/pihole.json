@@ -434,7 +434,7 @@
       "targets": [
         {
           "datasource": "PBFA97CFB590B2093",
-          "expr": "pihole_top_queries{hostname=~'$node'}",
+          "expr": "pihole_ads_blocked_today{hostname=~'$node'}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{ domain }}",
