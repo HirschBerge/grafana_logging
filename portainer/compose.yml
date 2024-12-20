@@ -1,0 +1,34 @@
+name: portainer
+
+networks:
+  proxy:
+    external: true
+
+services:
+  portainer:
+    restart: always
+    container_name: portainer
+      #    ports:
+      #      - "9443:9443"
+    image: "portainer/portainer-ce:latest"
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portainer.entrypoints=http"
+      - "traefik.http.routers.portainer.rule=Host(`portainer-prod.home.hirschykiss.net`)"
+      - "traefik.http.middlewares.portainer-https-redirect.redirectscheme.scheme=https"
+        #      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.portainer.middlewares=portainer-https-redirect"
+      - "traefik.http.routers.portainer-secure.entrypoints=https"
+      - "traefik.http.routers.portainer-secure.rule=Host(`portainer-prod.home.hirschykiss.net`)"
+      - "traefik.http.routers.portainer-secure.tls=true"
+      - "traefik.http.routers.portainer-secure.service=portainer"
+      - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+      - "traefik.docker.network=proxy"

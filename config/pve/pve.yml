@@ -1,6 +1,0 @@
-default:
-    user: root@pam
-    password: Ars3nalxhaka
-    # Optional: set to false to skip SSL/TLS verification
-    verify_ssl: false
-

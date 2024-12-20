@@ -1,0 +1,9 @@
+*/.env
+traefik/data/acme.json
+traefik/data/access.log
+config/__pycache__
+grafana/config/__pycache__
+portainer/certs/cert.pem
+portainer/certs/key.pem
+portainer/chisel/private-key.pem
+portainer/self_certs

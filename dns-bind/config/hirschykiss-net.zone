@@ -1,0 +1,52 @@
+$TTL 2d
+
+$ORIGIN home.hirschykiss.net.
+
+@               IN      SOA     ns.home.hirschykiss.net. info.home.hirschykiss.net. (
+								2023310300      ; serial
+								12h             ; refresh
+								15m             ; retry
+								3w              ; expire
+								2h              ; minimum ttl
+								)
+
+				IN      NS      ns.home.hirschykiss.net.
+
+ns              IN      A       10.10.10.53
+; -- add dns records below
+; -- Uptime Kuma
+kuma-prod-dir		IN 	A 		10.10.10.51
+kuma-prod-dir		IN 	A 		10.10.10.51
+kuma-backup-dir		IN 	A 		10.10.10.83
+kuma-prod	    	IN 	A 		10.10.10.53
+; -- Proxmox
+cluster0-prod-dir	IN 	A 		10.10.10.3
+cluster1-prod-dir	IN 	A 		10.10.10.4
+cluster2-prod-dir	IN 	A 		10.10.10.5
+cluster-pve		IN 	A 		10.10.10.53
+; -- All Docker containers
+docker-prod-dir		IN 	A 		10.10.10.53
+portainer-prod		IN 	A 		10.10.10.53
+traefik-prod		IN 	A 		10.10.10.53
+grafana-prod		IN 	A 		10.10.10.53
+; -- Plex (It's a docker on TrueNAS)
+plex-prod		IN 	A 		10.10.10.53
+; -- Pi-Hole
+pi-prod-dir		IN	A		10.10.10.54
+pi-prod			IN	A		10.10.10.53
+; -- Home Assistant
+hac-prod-dir		IN 	A 		10.10.10.19
+hac-prod		IN 	A 		10.10.10.53
+; -- TrueNAS Scale
+nas-prod-dir		IN 	A 		10.10.10.10
+nas-prod		IN 	A 		10.10.10.53
+
+;; -- Hosts
+host-yoitsu		IN	A		10.10.0.69
+host-shirohebi		IN	A		10.10.0.12
+
+;; -- Infrastructure
+router-infra		IN 	A	 	10.10.0.1
+unifi-infra		IN 	A		10.10.0.1
+16-switch-infra		IN 	A 		10.10.0.100
+flex-switch-infra	IN 	A 		10.10.0.200

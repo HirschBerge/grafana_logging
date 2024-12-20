@@ -1,0 +1,45 @@
+services:
+  traefik:
+    image: docker.io/library/traefik:v3.0.0
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    ports:
+      - 80:80
+      - 443:443
+      - 444:444
+      - 81:81
+      - 8080:8080
+    environment:
+      #- CF_DNS_API_TOKEN=YOUR_API_TOKEN
+      # If you choose to use an API Key instead of a Token, specify your email as well
+      - CF_API_EMAIL=${api_email}
+      - CF_API_KEY=${api_key}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data/traefik.yaml:/traefik.yml:ro
+      - ./data/acme.json:/acme.json
+      - ./data/config.yml:/config.yml:ro
+      - ./data/access.log:/access.log
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.entrypoints=http"
+      - "traefik.http.routers.traefik.rule=Host(`traefik-prod.home.hirschykiss.net`)"
+      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
+      - "traefik.http.routers.traefik-secure.entrypoints=https"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik-prod.home.hirschykiss.net`)"
+      - "traefik.http.routers.traefik-secure.tls=true"
+      - "traefik.http.routers.traefik-secure.tls.certresolver=production"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].main=home.hirschykiss.net"
+      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.home.hirschykiss.net"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+
+networks:
+  proxy:
+    external: true

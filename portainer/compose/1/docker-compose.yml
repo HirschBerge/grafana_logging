@@ -1,0 +1,122 @@
+---
+
+networks:
+  proxy:
+    external: true
+  authentik-backend:
+    external: false
+services:
+  postgres:
+    image: docker.io/library/postgres:16.3
+    container_name: authentik-db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-authentik}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?error}
+      - POSTGRES_DB=${POSTGRES_DB:-authentik}
+      - TZ=${TZ:-UTC}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U "${POSTGRES_USER:-authentik}"']
+      start_period: 30s
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - authentik-backend
+  redis:
+    image: docker.io/library/redis:7.2.4
+    container_name: authentik-redis
+    command: --save 60 1 --loglevel warning
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      start_period: 20s
+      interval: 30s
+      retries: 5
+      timeout: 3s
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - authentik-backend
+  server:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: authentik-server
+    command: server
+    # ports:
+    #  - "9443:9443"
+    networks:
+      - authentik-backend
+      - proxy
+    labels:
+      # Insecure
+      # - "traefik.http.routers.srv-prod-authentik-insec.entrypoints=http"
+      # - "traefik.http.routers.srv-prod-authentik-insec.rule=Host(`srv-prod-authentik.home.hirschykiss.net`)"
+      # - "traefik.http.middlewares.srv-prod-authentik-insec-https-redirect.redirectscheme.scheme=https"
+      # - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
+      # - "traefik.http.routers.srv-prod-authentik-insec.middlewares=srv-prod-authentik-insec-https-redirect"
+      # SSL
+      - "traefik.enable=true"
+      - "traefik.http.routers.srv-prod-authentik.entrypoints=https"
+      - "traefik.http.routers.srv-prod-authentik.rule=Host(`srv-prod-authentik.home.hirschykiss.net`)"
+      - "traefik.http.routers.srv-prod-authentik.tls=true"
+      # - "traefik.http.routers.srv-prod-authentik.tls.passthrough=true"
+      - "traefik.http.routers.srv-prod-authentik.certresolver=production"
+      - "traefik.http.routers.srv-prod-authentik.service=srv-prod-authentik"
+      - "traefik.http.services.srv-prod-authentik.loadbalancer.server.port=9000"
+      - "traefik.docker.network=proxy"
+    environment:
+      - AUTHENTIK_REDIS__HOST=authentik-redis
+      - AUTHENTIK_POSTGRESQL__HOST=authentik-db
+      - AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER:-authentik}
+      - AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB:-authentik}
+      - AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD:?error}
+      # (Required)  To generate a secret key run the following command:
+      #             echo $(openssl rand -base64 32)
+      - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY:?error}
+      # (Optional)  Enable Error Reporting
+      - AUTHENTIK_ERROR_REPORTING__ENABLED=${AUTHENTIK_ERROR_REPORTING:-false}
+    # ports:
+    #   - 9000:9000
+    #   - 9443:9443
+    volumes:
+      - /authentik/media:/media
+      - /authentik/custom-templates:/templates
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+  worker:
+    image: ghcr.io/goauthentik/server:latest
+    container_name: authentik-worker
+    command: worker
+    networks:
+      - authentik-backend
+    environment:
+      - AUTHENTIK_REDIS__HOST=authentik-redis
+      - AUTHENTIK_POSTGRESQL__HOST=authentik-db
+      - AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER:-authentik}
+      - AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB:-authentik}
+      - AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD:?error}
+      # (Required)  To generate a secret key run the following command:
+      #             echo $(openssl rand -base64 32)
+      - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY:?error}
+
+    volumes:
+      # (Optional)  When using the docker socket integration
+      # - /var/run/docker.sock:/var/run/docker.sock
+      - /authentik/media:/media
+      - /authentik/certs:/certs
+      - /authentik/custom-templates:/templates
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
