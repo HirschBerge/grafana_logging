@@ -7,3 +7,5 @@ portainer/certs/cert.pem
 portainer/certs/key.pem
 portainer/chisel/private-key.pem
 portainer/self_certs
+grafana/logs
+grafana/logs
