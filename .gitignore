@@ -6,6 +6,7 @@ grafana/config/__pycache__
 portainer/certs/cert.pem
 portainer/certs/key.pem
 portainer/chisel/private-key.pem
+portainer/docker_config/config.json
 portainer/self_certs
 grafana/logs
 grafana/logs
