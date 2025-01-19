@@ -10,3 +10,5 @@ portainer/docker_config/config.json
 portainer/self_certs
 grafana/logs
 grafana/logs
+portainer/docker_config/config.json
+portainer/portainer.db
