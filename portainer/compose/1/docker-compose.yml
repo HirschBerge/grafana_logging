@@ -1,7 +1,7 @@
 ---
 
 networks:
-  proxy:
+  traefik_proxy:
     external: true
   authentik-backend:
     external: false
@@ -48,7 +48,7 @@ services:
     #  - "9443:9443"
     networks:
       - authentik-backend
-      - proxy
+      - traefik_proxy
     labels:
       # Insecure
       # - "traefik.http.routers.srv-prod-authentik-insec.entrypoints=http"
@@ -65,7 +65,7 @@ services:
       - "traefik.http.routers.srv-prod-authentik.certresolver=production"
       - "traefik.http.routers.srv-prod-authentik.service=srv-prod-authentik"
       - "traefik.http.services.srv-prod-authentik.loadbalancer.server.port=9000"
-      - "traefik.docker.network=proxy"
+      - "traefik.docker.network=traefik_proxy"
     environment:
       - AUTHENTIK_REDIS__HOST=authentik-redis
       - AUTHENTIK_POSTGRESQL__HOST=authentik-db

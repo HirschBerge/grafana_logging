@@ -4,7 +4,7 @@ name: netprobe
 
 networks:
   netprobe-net:
-  proxy:
+  traefik_proxy:
     external: true   
 
 services:
@@ -64,7 +64,7 @@ services:
         #    ports:
         #      - '3001:3000'
     networks:
-      - proxy
+      - traefik_proxy
       - netprobe-net
     labels:
       - "traefik.enable=true"
@@ -100,7 +100,7 @@ services:
       - "traefik.http.routers.grafana-private-secure.service=grafana-private-secure"
       - "traefik.http.services.grafana-private-secure.loadbalancer.server.port=3000"
 
-      - "traefik.docker.network=proxy"
+      - "traefik.docker.network=traefik_proxy"
 
   prometheus-pve-exporter:
     restart: always
@@ -112,7 +112,7 @@ services:
       - ./config/pve:/etc/prometheus/
     networks:
       - netprobe-net     
-      - proxy
+      - traefik_proxy
 
   pihole:
     container_name: pihole
@@ -126,7 +126,7 @@ services:
         # - "9617:9617"
     networks:
       - netprobe-net
-      - proxy
+      - traefik_proxy
 
   unpoller:
     image: ghcr.io/unpoller/unpoller:latest
@@ -136,7 +136,7 @@ services:
     container_name: unpoller
     networks:
       - netprobe-net
-      - proxy
+      - traefik_proxy
     environment:
       - UP_INFLUXDB_DISABLE=true
       - UP_POLLER_DEBUG=false
