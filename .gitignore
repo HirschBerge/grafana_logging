@@ -12,3 +12,4 @@ grafana/logs
 grafana/logs
 portainer/docker_config/config.json
 portainer/portainer.db
+portainer/backups/portainer.db.bak
