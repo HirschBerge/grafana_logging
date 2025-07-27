@@ -15,38 +15,37 @@ $ORIGIN home.hirschykiss.net.
 ns              IN      A       10.10.10.53
 ; -- add dns records below
 ; -- Uptime Kuma
-kuma-prod-dir		IN 	A 		10.10.10.51
-kuma-prod-dir		IN 	A 		10.10.10.51
-kuma-backup-dir		IN 	A 		10.10.10.83
-kuma-prod	    	IN 	A 		10.10.10.53
+kuma-prod-dir		IN	A		10.10.10.51
+kuma-backup-dir		IN	A		10.10.10.83
+kuma-prod		IN	CNAME		ns.home.hirschykiss.net.
 ; -- Proxmox
-cluster0-prod-dir	IN 	A 		10.10.10.3
-cluster1-prod-dir	IN 	A 		10.10.10.4
-cluster2-prod-dir	IN 	A 		10.10.10.5
-cluster-pve		IN 	A 		10.10.10.53
+cluster0-prod-dir	IN	A		10.10.10.3
+cluster1-prod-dir	IN	A		10.10.10.4
+cluster2-prod-dir	IN	A		10.10.10.5
+cluster-pve		IN	CNAME		ns.home.hirschykiss.net.
 ; -- All Docker containers
-docker-prod-dir		IN 	A 		10.10.10.53
-portainer-prod		IN 	A 		10.10.10.53
-traefik-prod		IN 	A 		10.10.10.53
-grafana-prod		IN 	A 		10.10.10.53
+docker-prod-dir		IN	CNAME		ns.home.hirschykiss.net.
+portainer-prod		IN	CNAME		ns.home.hirschykiss.net.
+traefik-prod		IN	CNAME		ns.home.hirschykiss.net.
+grafana-prod		IN	CNAME		ns.home.hirschykiss.net.
 ; -- Plex (It's a docker on TrueNAS)
-plex-prod		IN 	A 		10.10.10.53
+plex-prod		IN	CNAME		ns.home.hirschykiss.net.
 ; -- Pi-Hole
 pi-prod-dir		IN	A		10.10.10.54
-pi-prod			IN	A		10.10.10.53
+pi-prod			IN	CNAME		ns.home.hirschykiss.net.
 ; -- Home Assistant
-hac-prod-dir		IN 	A 		10.10.10.19
-hac-prod		IN 	A 		10.10.10.53
+hac-prod-dir		IN	A		10.10.10.19
+hac-prod		IN	CNAME		ns.home.hirschykiss.net.
 ; -- TrueNAS Scale
-nas-prod-dir		IN 	A 		10.10.10.10
-nas-prod		IN 	A 		10.10.10.53
+nas-prod-dir		IN	A		10.10.10.10
+nas-prod		IN	CNAME		ns.home.hirschykiss.net.
 
 ;; -- Hosts
 host-yoitsu		IN	A		10.10.0.69
 host-shirohebi		IN	A		10.10.0.12
 
 ;; -- Infrastructure
-router-infra		IN 	A	 	10.10.0.1
-unifi-infra		IN 	A		10.10.0.1
-16-switch-infra		IN 	A 		10.10.0.100
-flex-switch-infra	IN 	A 		10.10.0.200
+router-infra		IN	A		10.10.0.1
+unifi-infra		IN	A		10.10.0.1
+16-switch-infra		IN	A		10.10.0.100
+flex-switch-infra	IN	A		10.10.0.200
