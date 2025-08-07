@@ -178,7 +178,7 @@ http:
     homeassistant:
       loadBalancer:
         servers:
-          - url: "http://10.10.10.19:8123/lovelace/HPCA"
+          - url: "http://10.10.10.39:8123/lovelace/HPCA"
         passHostHeader: true
     syncthing:
       loadBalancer:

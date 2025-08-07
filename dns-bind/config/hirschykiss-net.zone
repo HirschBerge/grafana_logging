@@ -41,7 +41,7 @@ plex-prod		IN	CNAME		ns.home.hirschykiss.net.
 pi-prod-dir		IN	A		10.10.10.54
 pi-prod			IN	CNAME		ns.home.hirschykiss.net.
 ; -- Home Assistant
-hac-prod-dir		IN	A		10.10.10.19
+hac-prod-dir		IN	A		10.10.10.39
 hac-prod		IN	CNAME		ns.home.hirschykiss.net.
 ; -- TrueNAS Scale
 nas-prod-dir		IN	A		10.10.10.10
