@@ -2010,6 +2010,14 @@
         }
       ],
       "title": "All Port Information",
+      "footer": {
+        "show": true,
+        "reducer": [
+          "sum"
+        ],
+        "countRows": false,
+        "fields": ""
+      },
       "transformations": [
         {
           "id": "merge",
