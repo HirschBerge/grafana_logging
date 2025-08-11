@@ -16,7 +16,6 @@ services:
       - ./config/redis:/etc/redis/
     networks:
       - netprobe-net
-        
   netprobe:
     restart: always
     container_name: netprobe-probe
