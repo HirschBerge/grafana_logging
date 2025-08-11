@@ -7,6 +7,10 @@ scrape_configs:
           - 'presentation:5000'
         labels:
           group: 'Home network'
+  - job_name: prom-plex
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['10.10.10.39:9000']
   - job_name: 'pihole'
     honor_timestamps: true
     metrics_path: /metrics
