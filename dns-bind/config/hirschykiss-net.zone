@@ -37,6 +37,8 @@ traefik-prod		IN	CNAME		ns.home.hirschykiss.net.
 grafana-prod		IN	CNAME		ns.home.hirschykiss.net.
 ; -- Plex (It's a docker on TrueNAS)
 plex-prod		IN	CNAME		ns.home.hirschykiss.net.
+; -- Rqbit Host
+rqbit-prod		IN	A		10.10.10.43
 ; -- Pi-Hole
 pi-prod-dir		IN	A		10.10.10.54
 pi-prod			IN	CNAME		ns.home.hirschykiss.net.
