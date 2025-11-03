@@ -69,6 +69,15 @@ http:
         - https-redirectscheme
       tls: {}
       service: truenas
+    kavita:
+      entryPoints:
+        - "https"
+      rule: "Host(`kavita-prod.home.hirschykiss.net`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: kavita
     plex:
       entryPoints:
         - "https"
@@ -194,6 +203,11 @@ http:
       loadBalancer:
         servers:
           - url: "https://10.10.10.10"
+        passHostHeader: true
+    kavita:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.10.10:30069"
         passHostHeader: true
     plex:
       loadBalancer:
