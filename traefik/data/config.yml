@@ -69,6 +69,15 @@ http:
         - https-redirectscheme
       tls: {}
       service: truenas
+    mangadl:
+      entryPoints:
+        - "https"
+      rule: "Host(`mangadl-prod.home.hirschykiss.net`)"
+      middlewares:
+        - default-headers
+        - https-redirectscheme
+      tls: {}
+      service: mangadl
     kavita:
       entryPoints:
         - "https"
@@ -203,6 +212,11 @@ http:
       loadBalancer:
         servers:
           - url: "https://10.10.10.10"
+        passHostHeader: true
+    mangadl:
+      loadBalancer:
+        servers:
+          - url: "http://10.10.10.74:4567"
         passHostHeader: true
     kavita:
       loadBalancer:
