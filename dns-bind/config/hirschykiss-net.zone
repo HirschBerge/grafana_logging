@@ -53,8 +53,8 @@ nas-prod-dir		IN	A		10.10.10.10
 nas-prod		IN	CNAME		ns.home.hirschykiss.net.
 
 ;; -- Hosts
-host-yoitsu		IN	A		10.10.0.69
-host-shirohebi		IN	A		10.10.0.12
+host-yoitsu		IN	A		10.10.20.137
+host-shirohebi		IN	A		10.10.20.161
 
 ;; -- Infrastructure
 router-infra		IN	A		10.10.0.1
