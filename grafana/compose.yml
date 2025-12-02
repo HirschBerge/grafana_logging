@@ -9,7 +9,7 @@ networks:
 
 services:
   redis:
-    restart: always
+    restart: unless-stopped
     container_name: netprobe-redis
     image: "redis:latest"
     volumes:
@@ -17,7 +17,7 @@ services:
     networks:
       - netprobe-net
   netprobe:
-    restart: always
+    restart: unless-stopped
     container_name: netprobe-probe
     image: "plaintextpackets/netprobe:latest"
     volumes:
@@ -28,7 +28,7 @@ services:
       - netprobe-net
 
   presentation:
-    restart: always
+    restart: unless-stopped
     container_name: netprobe-presentation
     image: "plaintextpackets/netprobe:latest"
     volumes:
@@ -39,7 +39,7 @@ services:
       - netprobe-net
 
   prometheus:
-    restart: always
+    restart: unless-stopped
     container_name: netprobe-prometheus
     image: "prom/prometheus"
     volumes:
@@ -52,7 +52,7 @@ services:
       - netprobe-net
 
   grafana:
-    restart: always
+    restart: unless-stopped
     container_name: netprobe-grafana
     image: grafana/grafana-enterprise
     volumes:
@@ -102,7 +102,7 @@ services:
       - "traefik.docker.network=traefik_proxy"
 
   prometheus-pve-exporter:
-    restart: always
+    restart: unless-stopped
     container_name: prometheus-pve-exporter
     image: prompve/prometheus-pve-exporter
       #ports:
@@ -115,7 +115,7 @@ services:
 
   pihole:
     container_name: pihole
-    restart: always
+    restart: unless-stopped
     image: ekofr/pihole-exporter:latest
     environment:
       - PIHOLE_HOSTNAME=10.10.10.54

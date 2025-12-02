@@ -216,7 +216,7 @@ http:
     mangadl:
       loadBalancer:
         servers:
-          - url: "http://10.10.10.74:4567"
+          - url: "http://10.10.10.16:4567"
         passHostHeader: true
     kavita:
       loadBalancer:

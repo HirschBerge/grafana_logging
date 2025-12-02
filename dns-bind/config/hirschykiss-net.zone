@@ -14,7 +14,7 @@ $ORIGIN home.hirschykiss.net.
 
 ns              IN      A       10.10.10.53
 ; -- add dns records below
-
+nixos-server	IN	A	10.10.10.16
 ;; -- Infrastructure
 router-infra       IN      A       10.10.0.1
 unifi-infra        IN      A       10.10.0.1
@@ -24,33 +24,33 @@ flex-switch-infra  IN      A       10.10.0.200
 ; -- Uptime Kuma
 kuma-prod-dir		IN	A		10.10.10.51
 kuma-backup-dir		IN	A		10.10.10.83
-kuma-prod		IN	CNAME		ns.home.hirschykiss.net.
+kuma-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Proxmox
 cluster0-prod-dir	IN	A		10.10.10.3
 cluster1-prod-dir	IN	A		10.10.10.4
 cluster2-prod-dir	IN	A		10.10.10.5
-cluster-pve		IN	CNAME		ns.home.hirschykiss.net.
+cluster-pve		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- All Docker containers
-docker-prod-dir		IN	CNAME		ns.home.hirschykiss.net.
-portainer-prod		IN	CNAME		ns.home.hirschykiss.net.
-traefik-prod		IN	CNAME		ns.home.hirschykiss.net.
-grafana-prod		IN	CNAME		ns.home.hirschykiss.net.
+docker-prod-dir		IN	CNAME		nixos-server.home.hirschykiss.net.
+portainer-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
+traefik-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
+grafana-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Plex (It's a docker on TrueNAS)
-plex-prod		IN	CNAME		ns.home.hirschykiss.net.
+plex-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Books and manga
-kavita-prod		IN	CNAME		ns.home.hirschykiss.net.
-mangadl-prod		IN	CNAME		ns.home.hirschykiss.net.
+kavita-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
+mangadl-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Rqbit Host
 rqbit-prod		IN	A		10.10.10.43
 ; -- Adblock
 dns-dir		IN	A		10.10.10.54
-dns			IN	CNAME		ns.home.hirschykiss.net.
+dns			IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Home Assistant
 hac-prod-dir		IN	A		10.10.10.39
-hac-prod		IN	CNAME		ns.home.hirschykiss.net.
+hac-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- TrueNAS Scale
 nas-prod-dir		IN	A		10.10.10.10
-nas-prod		IN	CNAME		ns.home.hirschykiss.net.
+nas-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 
 ;; -- Hosts
 host-yoitsu		IN	A		10.10.20.137
