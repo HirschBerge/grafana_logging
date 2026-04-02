@@ -40,6 +40,13 @@ plex-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Books and manga
 kavita-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 mangadl-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
+jellyfin-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
+sonarr			IN	CNAME		nixos-server.home.hirschykiss.net.
+radarr			IN	CNAME		nixos-server.home.hirschykiss.net.
+tadarr			IN	CNAME		nixos-server.home.hirschykiss.net.
+lidarr			IN	CNAME		nixos-server.home.hirschykiss.net.
+prowlarr		IN	CNAME		nixos-server.home.hirschykiss.net.
+qbittorrent		IN	CNAME		nixos-server.home.hirschykiss.net.
 ; -- Rqbit Host
 rqbit-prod		IN	A		10.10.10.43
 ; -- Adblock
