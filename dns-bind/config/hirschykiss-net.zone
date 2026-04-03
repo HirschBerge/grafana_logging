@@ -43,6 +43,8 @@ mangadl-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 jellyfin-prod		IN	CNAME		nixos-server.home.hirschykiss.net.
 sonarr			IN	CNAME		nixos-server.home.hirschykiss.net.
 seer			IN	CNAME		nixos-server.home.hirschykiss.net.
+bazarr			IN	CNAME		nixos-server.home.hirschykiss.net.
+tracearr		IN	CNAME		nixos-server.home.hirschykiss.net.
 radarr			IN	CNAME		nixos-server.home.hirschykiss.net.
 tadarr			IN	CNAME		nixos-server.home.hirschykiss.net.
 lidarr			IN	CNAME		nixos-server.home.hirschykiss.net.
